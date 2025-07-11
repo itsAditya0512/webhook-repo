@@ -10,7 +10,7 @@ webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 def receiver():
     data = request.get_json()
     author = data.get("sender", {}).get("login")
-    timestamp = datetime.utcnow().strftime('%-d %B %Y - %-I:%M %p UTC')
+    timestamp = datetime.now().strftime('%-d %B %Y - %-I:%M %p UTC')
 
     if data.get("commits"):
         # Handle push event
