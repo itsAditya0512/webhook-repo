@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webhook Events</title>
+</head>
+<body>
+  <h1>Webhook Event Feed</h1>
+  <div id="events"></div>
+
+  <script>
+    async function loadEvents() {
+      const res = await fetch('/webhook/events');
+      const data = await res.json();
+      const eventsDiv = document.getElementById('events');
+      eventsDiv.innerHTML = '';
+
+      data.reverse().forEach(event => {
+        const el = document.createElement('div');
+        el.innerHTML = `<p><strong>${event.message}</strong><br><small>${event.timestamp}</small></p><hr>`;
+        eventsDiv.appendChild(el);
+      });
+    }
+
+    loadEvents();
+    setInterval(loadEvents, 15000);
+  </script>
+</body>
+</html>
