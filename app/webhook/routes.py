@@ -9,6 +9,7 @@ webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 @webhook.route('/receiver', methods=["POST"])
 def receiver():
     data = request.get_json()
+    print("Raw GitHub Webhook Payload:\n", data)
     author = data.get("sender", {}).get("login")
     timestamp = datetime.now().strftime('%-d %B %Y - %-I:%M %p UTC')
 
