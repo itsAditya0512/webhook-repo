@@ -1,3 +1,6 @@
+# This code initializes a Flask application, sets up a route for the home page,
+# and prints the URL rules defined in the application.
+
 from flask import Flask, render_template
 from app.webhook import create_app
 import os
@@ -17,3 +20,5 @@ for rule in app.url_map.iter_rules():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000, host='0.0.0.0')
+
+
