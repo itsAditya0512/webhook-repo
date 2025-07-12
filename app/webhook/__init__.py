@@ -6,7 +6,7 @@ def create_app(template_folder=None):
     app = Flask(__name__, template_folder=template_folder or "templates")
     
     # MongoDB configuration
-    app.config["MONGO_URI"] = "mongodb+srv://admin:admin@cluster0py.kkxwtyy.mongodb.net/webhookDB?retryWrites=true&w=majority"
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/webhookDB"
     
     # Initialize Mongo with Flask app
     mongo.init_app(app)
